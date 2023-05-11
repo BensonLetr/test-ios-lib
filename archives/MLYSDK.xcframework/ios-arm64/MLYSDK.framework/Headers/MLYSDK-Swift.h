@@ -256,11 +256,15 @@ using UInt = size_t;
 
 SWIFT_CLASS("_TtC6MLYSDK17MLYAVPlayerPlugin")
 @interface MLYAVPlayerPlugin : NSObject
+@property (nonatomic) BOOL live;
+@property (nonatomic) BOOL autoplay;
+- (nonnull instancetype)initWithLive:(BOOL)live autoplay:(BOOL)autoplay OBJC_DESIGNATED_INITIALIZER;
 - (void)keepLatency:(double)latency;
 - (void)adapt:(AVPlayerViewController * _Nonnull)playerViewController;
 - (void)deactivate;
 - (void)proxyPlayWithUrl:(NSURL * _Nonnull)url;
-- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
 
 @class NSString;
@@ -283,6 +287,7 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _No
 + (BOOL)initializeAndReturnError:(NSError * _Nullable * _Nullable)error :(SWIFT_NOESCAPE void (^ _Nonnull)(MLYDriverOptions * _Nonnull))closure;
 + (BOOL)activateAndReturnError:(NSError * _Nullable * _Nullable)error;
 + (void)deactivate;
++ (BOOL)reactivateAndReturnError:(NSError * _Nullable * _Nullable)error;
 + (void)test1;
 + (void)test2;
 @end

@@ -18,13 +18,15 @@ import SwiftProtobuf
 import WebRTC
 import _Concurrency
 import _StringProcessing
-@objc @_inheritsConvenienceInitializers @objcMembers public class MLYAVPlayerPlugin : ObjectiveC.NSObject {
+@objc @objcMembers public class MLYAVPlayerPlugin : ObjectiveC.NSObject {
+  @objc public var live: Swift.Bool
+  @objc public var autoplay: Swift.Bool
+  @objc public init(live: Swift.Bool = false, autoplay: Swift.Bool = true)
   @objc public func keepLatency(_ latency: Swift.Double = 0)
   @objc public func adapt(_ playerViewController: AVKit.AVPlayerViewController)
   @objc public func deactivate()
   @objc deinit
   @objc public func proxyPlay(url: Foundation.URL)
-  @objc override dynamic public init()
 }
 @_hasMissingDesignatedInitializers public class AVPlayerTool {
   public static func remainBufferedTime(_ currentItem: AVFoundation.AVPlayerItem?, _ currentTime: CoreMedia.CMTime) -> Swift.Double
@@ -81,11 +83,10 @@ public class MLYChart {
   public func encode(to encoder: Swift.Encoder) throws
   required public init(from decoder: Swift.Decoder) throws
 }
-public class MLYData {
-  public init()
-  #if compiler(>=5.3) && $AsyncAwait
-  public static func getClientPeer() async -> Swift.String
-  #endif
+@_hasMissingDesignatedInitializers public class MLYData {
+  public static var instance: MLYSDK.MLYData
+  public var token: Swift.String?
+  public var peerID: Swift.String?
   @objc deinit
 }
 @objc @_inheritsConvenienceInitializers @objcMembers public class MLYDriver : ObjectiveC.NSObject {
@@ -95,6 +96,7 @@ public class MLYData {
   @objc public static func initialize(_ closure: (MLYSDK.MLYDriverOptions) -> ()) throws
   @objc public static func activate() throws
   @objc public static func deactivate()
+  @objc public static func reactivate() throws
   @objc public static func test1()
   @objc public static func test2()
   @objc deinit
