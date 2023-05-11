@@ -1,0 +1,16 @@
+PODS:
+  - test-ios-lib (0.1.0)
+
+DEPENDENCIES:
+  - test-ios-lib (from `../`)
+
+EXTERNAL SOURCES:
+  test-ios-lib:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  test-ios-lib: 0c0f8d4ec412b57e243516233383ca774080a870
+
+PODFILE CHECKSUM: a62dca0beb3dbaac48af880bf5e8474668c9647e
+
+COCOAPODS: 1.11.3

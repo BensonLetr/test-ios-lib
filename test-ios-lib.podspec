@@ -28,9 +28,9 @@ TODO: Add long description of the pod here.
   s.source           = { :git => 'https://github.com/119390052/test-ios-lib.git', :tag => s.version.to_s }
   # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
 
-  s.ios.deployment_target = '10.0'
+  s.ios.deployment_target = '14.0'
 
-  s.source_files = 'test-ios-lib/Classes/**/*'
+  s.ios.vendored_frameworks = 'archives/MLYSDK.xcframework'
   
   # s.resource_bundles = {
   #   'test-ios-lib' => ['test-ios-lib/Assets/*.png']
@@ -39,4 +39,17 @@ TODO: Add long description of the pod here.
   # s.public_header_files = 'Pod/Classes/**/*.h'
   # s.frameworks = 'UIKit', 'MapKit'
   # s.dependency 'AFNetworking', '~> 2.3'
+  
+  s.frameworks = 'AVFoundation'
+  
+  s.dependency 'Mux-Stats-AVPlayer', '~> 3.1.0'
+  s.dependency 'GCDWebServer', '~> 3.5.4'
+  s.dependency 'Sentry', '~> 7.31.3'
+  s.dependency 'GoogleWebRTC'
+  # s.dependency 'WebRTC.Swift'
+  s.dependency  'SwiftCentrifuge'
+  s.dependency  'SwiftProtobuf', '~> 1.0'
+
+  s.platform = :ios,'14.0'
+  
 end
